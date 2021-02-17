@@ -1,0 +1,14 @@
+{
+    "CreateAPIKey": 0,
+    "AppSyncApiName": "realtimechatproject",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authrealtimechatproject2927ecd0",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-realtimechatproject-dev-182439-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/299d02b4d308c3e1b62912930474409f7a3da90a"
+}

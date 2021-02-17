@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-realtimechatproject-dev-182439-authRole",
+            "UnauthRoleArn": "arn:aws:iam::860454574534:role/amplify-realtimechatproject-dev-182439-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::860454574534:role/amplify-realtimechatproject-dev-182439-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-realtimechatproject-dev-182439-deployment",
+            "UnauthRoleName": "amplify-realtimechatproject-dev-182439-unauthRole",
+            "StackName": "amplify-realtimechatproject-dev-182439",
+            "StackId": "arn:aws:cloudformation:us-east-1:860454574534:stack/amplify-realtimechatproject-dev-182439/754bcfd0-349b-11eb-afef-1277bf9feb05",
+            "AmplifyAppId": "d2e48hjul8ndtx"
+        },
+        "categories": {
+            "auth": {
+                "realtimechatproject2927ecd0": {}
+            }
+        }
+    }
+}

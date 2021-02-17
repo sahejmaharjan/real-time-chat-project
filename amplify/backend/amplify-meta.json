@@ -1,0 +1,63 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-realtimechatproject-dev-182439-authRole",
+			"UnauthRoleArn": "arn:aws:iam::860454574534:role/amplify-realtimechatproject-dev-182439-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::860454574534:role/amplify-realtimechatproject-dev-182439-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "amplify-realtimechatproject-dev-182439-deployment",
+			"UnauthRoleName": "amplify-realtimechatproject-dev-182439-unauthRole",
+			"StackName": "amplify-realtimechatproject-dev-182439",
+			"StackId": "arn:aws:cloudformation:us-east-1:860454574534:stack/amplify-realtimechatproject-dev-182439/754bcfd0-349b-11eb-afef-1277bf9feb05",
+			"AmplifyAppId": "d2e48hjul8ndtx"
+		}
+	},
+	"auth": {
+		"realtimechatproject2927ecd0": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-realtimechatproject-dev-182439-deployment/amplify-cfn-templates/auth/realtimechatproject2927ecd0-cloudformation-template.yml",
+				"logicalId": "authrealtimechatproject2927ecd0"
+			},
+			"lastPushTimeStamp": "2020-12-14T20:02:51.783Z",
+			"output": {
+				"AppClientSecret": "1hkjfrqlo1gkp8n0547uiemrburv9341841kuf8kh646la6846oa",
+				"UserPoolId": "us-east-1_RU2DemGqO",
+				"AppClientIDWeb": "64rs7lk278f52d5iij1rvn95as",
+				"AppClientID": "2vg97f960kvqv7nf200vu0d2lt",
+				"IdentityPoolId": "us-east-1:0da4de11-490a-4423-9792-90cce129898b",
+				"IdentityPoolName": "realtimechatproject2927ecd0_identitypool_2927ecd0__dev",
+				"UserPoolName": "realtimechatproject2927ecd0_userpool_2927ecd0"
+			},
+			"lastPushDirHash": "EW9Sx8wJ5ZSX4oMmcvmVLvxUUyo="
+		}
+	},
+	"api": {
+		"realtimechatproject": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authrealtimechatproject2927ecd0"
+						}
+					},
+					"additionalAuthenticationProviders": []
+				},
+				"GraphQLAPIIdOutput": "gitueedb6zbyncglqkwfym6com",
+				"GraphQLAPIEndpointOutput": "https://am57it2aurg3riw3fandmdvrjq.appsync-api.us-east-1.amazonaws.com/graphql"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-realtimechatproject-dev-182439-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apirealtimechatproject"
+			},
+			"lastPushTimeStamp": "2020-12-14T20:02:55.121Z",
+			"lastPushDirHash": "cNOeaPGZOUHoGJUchV9BAx3Rsg4="
+		}
+	}
+}
