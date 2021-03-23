@@ -1,5 +1,9 @@
 import { API, Auth, graphqlOperation } from "aws-amplify";
-import { createChatRoom, createChatRoomUser } from "../../graphql/mutations";
+import {
+  createChatRoom,
+  createChatRoomUser,
+  createUser as createUserFunction,
+} from "../../graphql/mutations";
 import { messagesByChatRoom } from "../../graphql/queries";
 import { getUser } from "../../queries";
 
@@ -19,7 +23,7 @@ export const addOtherUserInChat = (newChatRoom, id) => {
   return API.graphql(
     graphqlOperation(createChatRoomUser, {
       input: {
-        userID: id.id,
+        userID: id,
         chatRoomID: newChatRoom.id,
       },
     })
@@ -47,14 +51,16 @@ export const fetchUser = (userInfo) => {
   );
 };
 export const createUser = (newUser) => {
-  return API.graphql(graphqlOperation(createUser, { input: newUser }));
+  console.log("new User is ", newUser);
+  return API.graphql(graphqlOperation(createUserFunction, { input: newUser }));
 };
 
-export const messagesData = (data) => {
+export const messagesData = ({ data }) => {
+  console.log("data is ", data);
   return API.graphql(
     graphqlOperation(messagesByChatRoom, {
-      chatRoomID: data.id,
-      sortDirection: "DESC",
+      chatRoomID: data.data,
+      sortDirection: "ASC",
     })
   );
 };

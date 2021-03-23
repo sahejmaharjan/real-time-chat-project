@@ -12,6 +12,7 @@ import { getUser } from "./queries";
 import ChatListItem from "./ChatListItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchChatRooms } from "./store/all/action";
+import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 
 const Sidebar = () => {
   const user = { displayName: "Sahej", uid: "123" };
@@ -79,7 +80,25 @@ const Sidebar = () => {
 
     // }
   };
+  console.log("user Data is ", userAllData?.data?.getUser?.chatRoomUser?.items);
+  const [search, setSearch] = useState("");
+  const [searchMeta, setSearchMeta] = useState([]);
 
+  function onChangeSearch(e) {
+    let text = e.target.value;
+    setSearch(text);
+    if (allUsers.length === 0) {
+      return;
+    }
+
+    if (text.length !== 0) {
+      const regexp = new RegExp(`.*${text}`, "i");
+      setSearchMeta(allUsers?.sort().filter((v) => regexp.test(v.name)));
+    } else {
+      setSearchMeta([]);
+    }
+  }
+  console.log("search Meta data is ", searchMeta);
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -96,14 +115,42 @@ const Sidebar = () => {
 
           <AddIcon onClick={handleAddChannel} className="sidebar__addChannel" />
         </div>
+        {/* <input
+          className="inputSearch"
+          onChange={(e) => onChangeSearch(e)}
+          value={search}
+          style={{
+            height: 40,
+            borderColor: "gray",
+            borderWidth: 1,
+            placeholderTextColor: "gray",
+            borderRadius: 10,
+          }}
+        ></input> */}
+        <div className="chatHeader__search">
+          <input
+            style={{
+              flex: 1,
+              marginLeft: "20px",
+              opacity: 2,
+              color: "black",
+            }}
+            type="text"
+            placeholder="Search"
+            onChange={(e) => onChangeSearch(e)}
+            value={search}
+          />
+          <SearchRoundedIcon />
+        </div>
         <div className="sidebar__channelsList">
-          {allUsers?.map(({ id, name, imageUri, status }) => (
+          {searchMeta?.map(({ id, name, imageUri, status }) => (
             <SidebarChannel
               key={id}
               id={id}
               name={name}
               imageUri={imageUri}
               status={status}
+              chatRooms={chatRooms}
             />
           ))}
         </div>
@@ -112,8 +159,10 @@ const Sidebar = () => {
         </div>
         <div>
           {!!chatRooms &&
-            chatRooms.data?.getUser.chatRoomUser.items?.map((item) => {
-              return <ChatListItem chatRoom={item.chatRoom} />;
+            chatRooms.data?.getUser?.chatRoomUser?.items?.map((item) => {
+              return (
+                <ChatListItem chatRoom={item.chatRoom} chatRoomId={item.id} />
+              );
             })}
         </div>
       </div>
@@ -136,8 +185,9 @@ const Sidebar = () => {
       <div className="sidebar__profile">
         <Avatar src={user.photo} onClick={() => {}} />
         <div className="sidebar__profileInfo">
-          <h3>{user.displayName}</h3>
-          <p>#{user.uid.substring(0, 5)}</p>
+          <h3>{userAllData?.data?.getUser?.name}</h3>
+          {/* <h3>{user.displayName}</h3>
+          <p>#{user.uid.substring(0, 5)}</p> */}
         </div>
 
         <div className="sidebar__profileIcons">

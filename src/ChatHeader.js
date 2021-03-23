@@ -18,11 +18,13 @@ const ChatHeader = ({ channelName }) => {
         <EditLocationRounded />
         <PeopleAltRounded /> */}
 
-        <div className="chatHeader__search">
+        {/* <div className="chatHeader__search">
           <input type="text" placeholder="Search" />
           <SearchRoundedIcon />
+        </div> */}
+        <div style={{ position: "absolute", right: "20px" }}>
+          <AmplifySignOut />
         </div>
-        <AmplifySignOut />
         {/* <SendRoundedIcon /> */}
         {/* <HelpRoundedIcon /> */}
       </div>

@@ -4,14 +4,14 @@ import { useDispatch } from "react-redux";
 import "./SidebarChannel.css";
 import { createChatRoom } from "./store/all/action";
 
-const SidebarChannel = ({ id, name, imageUri }) => {
-  // console.log("id is ", id);
+const SidebarChannel = ({ id, name, imageUri, chatRooms }) => {
+  console.log("id is ", chatRooms);
   const dispatch = useDispatch();
   return (
     <div
       className="sidebarChannel"
       onClick={() => {
-        dispatch(createChatRoom({ id: id }));
+        dispatch(createChatRoom({ id: id, chatRooms: chatRooms }));
       }}
     >
       <h4>

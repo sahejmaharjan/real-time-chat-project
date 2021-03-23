@@ -12,6 +12,8 @@ import {
   FETCH_CHATROOMS,
   FETCH_CHATROOMS_SUCCESS,
   FETCH_CHATROOMS_FAILED,
+  NONE,
+  SET_CURRENT_CHATID,
 } from "./constant";
 
 const InitialState = {
@@ -25,6 +27,8 @@ const InitialState = {
   chatRoomData: [],
   error: null,
   refresh: 0,
+  currentChatId: "",
+  otherUserName: "#channelName",
 };
 
 export default function allReducer(state = InitialState, action) {
@@ -102,6 +106,14 @@ export default function allReducer(state = InitialState, action) {
         ...state,
         chatRoomloading: false,
         error: action.payload.message,
+      };
+    }
+    case SET_CURRENT_CHATID: {
+      console.log("currentChatId", action.payload.currentChatId);
+      return {
+        ...state,
+        currentChatId: action.payload.currentChatId,
+        otherUserName: action.payload.otherUserName,
       };
     }
     default: {
